@@ -1,0 +1,17 @@
+
+[ req ]
+prompt                  = yes
+distinguished_name      = server_distinguished_name
+req_extensions          = v3_req
+
+[ server_distinguished_name ]
+commonName              = Common Name
+stateOrProvinceName     = State
+countryName             = Country
+emailAddress            = E-Mail
+organizationName        = Organization Name
+organizationalUnitName  = Organizational Unit Name
+
+[ v3_req ]
+basicConstraints        = CA:FALSE
+keyUsage                = nonRepudiation, digitalSignature, keyEncipherment

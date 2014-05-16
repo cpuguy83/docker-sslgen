@@ -31,11 +31,11 @@ echo "Generating SSL Cert"
 echo "Enter name for certificate file"
 read CERT_NAME
 export OPENSSL_CONF=/var/ssl/crt_conf.cnf
-openssl req -nodes -newkey rsa:2048 -keyout tempkey.pem -keyform PEM -out tempreq.pem -outform PEM
+openssl req -nodes -newkey rsa:2048 -keyout /var/ssl/certs/${CERT_NAME}.key -keyform PEM -out tempreq.pem -outform PEM
 
 export OPENSSL_CONF=/var/ssl/ca_conf.cnf
 openssl ca -in tempreq.pem -out ${CERT_NAME}.pem
-rm -f tempkey.pem && rm -f tempreq.pem
+rm -f tempreq.pem
 
 mv /var/ssl/certs/${serial}.pem /var/ssl/certs/${CERT_NAME}.pem
 chmod 640 /var/ssl/certs/${CERT_NAME}.pem
